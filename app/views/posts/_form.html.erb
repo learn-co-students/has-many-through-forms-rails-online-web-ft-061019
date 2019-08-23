@@ -3,12 +3,16 @@
 </div>
 <%= form_for post do |f| %>
   <%= f.label "Title" %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title %><br>
   <%= f.label "Content" %>
-  <%= f.text_area :content %>
-  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+  <%= f.text_area :content %><br><br>
+  Existing Categores:
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %><br>
+  
+  Create a New Category:
   <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
+  <%# the post.categores.build - is the object we want to build - doing it by this means (instead of Category.new) will auto link the new category to this post ID in the post_categores table%>
     <%= categories_fields.text_field :name %>
-  <% end %>
+  <% end %><br>
   <%= f.submit %>
 <% end %>
