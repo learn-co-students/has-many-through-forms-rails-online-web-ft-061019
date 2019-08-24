@@ -12,4 +12,4 @@ class Post < ActiveRecord::Base
 
 end
 
-#done
+#done#tests not passed no testss
